@@ -1,0 +1,7 @@
+com\chatseguro\ui\ConsolaUI.class
+com\chatseguro\crypto\DHKeyExchange.class
+com\chatseguro\net\ConexionManager.class
+com\chatseguro\net\MensajeHandler.class
+com\chatseguro\crypto\AESManager.class
+com\chatseguro\app\ChatApp.class
+com\chatseguro\App.class
