@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.chatseguro.AESManagerTest" time="0.246" tests="1" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.chatseguro.AESManagerTest" time="0.33" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="CO"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\arang\AppData\Local\Temp\surefire11551530670142484651\surefirebooter3926812333986967767.jar C:\Users\arang\AppData\Local\Temp\surefire11551530670142484651 2025-05-27T14-57-13_827-jvmRun1 surefire7082964556571046201tmp surefire_01018624939195209456tmp"/>
+    <property name="sun.java.command" value="C:\Users\arang\AppData\Local\Temp\surefire3912773865172362812\surefirebooter10521693141444902477.jar C:\Users\arang\AppData\Local\Temp\surefire3912773865172362812 2025-05-27T15-22-50_902-jvmRun1 surefire3744257720675915063tmp surefire_017409507627502355329tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="com.chatseguro.AESManagerTest#testEncryptDecrypt"/>
     <property name="surefire.test.class.path" value="C:\Andrés\GIT\Proyecto_Ciberseguridad\chat-cifrado\target\test-classes;C:\Andrés\GIT\Proyecto_Ciberseguridad\chat-cifrado\target\classes;C:\Users\arang\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\arang\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\arang\AppData\Local\Temp\surefire11551530670142484651\surefirebooter3926812333986967767.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\arang\AppData\Local\Temp\surefire3912773865172362812\surefirebooter10521693141444902477.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.15+9-LTS-241"/>
@@ -59,9 +59,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testEncryptDecrypt" classname="com.chatseguro.AESManagerTest" time="0.175">
-    <failure message="Este es un mensaje secreto expected:&lt;E[ste es un mensaje secreto]&gt; but was:&lt;E[l mensaje descifrado debe coincidir con el original]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: Este es un mensaje secreto expected:<E[ste es un mensaje secreto]> but was:<E[l mensaje descifrado debe coincidir con el original]>
-	at com.chatseguro.AESManagerTest.testEncryptDecrypt(AESManagerTest.java:27)
-]]></failure>
-  </testcase>
+  <testcase name="testEncryptDecrypt" classname="com.chatseguro.AESManagerTest" time="0.236"/>
 </testsuite>

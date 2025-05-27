@@ -24,6 +24,7 @@ public class AESManagerTest {
         String encrypted = aesManager.encrypt(original);
         String decrypted = aesManager.decrypt(encrypted);
 
-        assertEquals(original, decrypted, "El mensaje descifrado debe coincidir con el original");
+        assertEquals("El mensaje descifrado debe coincidir con el original", "Este es un mensaje secreto", decrypted);
+
     }
 }

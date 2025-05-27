@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.chatseguro.ConexionManagerTest" time="0.849" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.chatseguro.ConexionManagerTest" time="0.845" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="CO"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\arang\AppData\Local\Temp\surefire6255472653546629218\surefirebooter7377634084733499454.jar C:\Users\arang\AppData\Local\Temp\surefire6255472653546629218 2025-05-27T14-58-10_309-jvmRun1 surefire17177336450642820379tmp surefire_010475457944998205946tmp"/>
+    <property name="sun.java.command" value="C:\Users\arang\AppData\Local\Temp\surefire7481851760294213757\surefirebooter18379003382532049116.jar C:\Users\arang\AppData\Local\Temp\surefire7481851760294213757 2025-05-27T15-23-10_482-jvmRun1 surefire7858012218208930093tmp surefire_05017037090569511727tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="com.chatseguro.ConexionManagerTest#testConexionClienteServidorYEnvioMensaje"/>
     <property name="surefire.test.class.path" value="C:\Andrés\GIT\Proyecto_Ciberseguridad\chat-cifrado\target\test-classes;C:\Andrés\GIT\Proyecto_Ciberseguridad\chat-cifrado\target\classes;C:\Users\arang\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\arang\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\arang\AppData\Local\Temp\surefire6255472653546629218\surefirebooter7377634084733499454.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\arang\AppData\Local\Temp\surefire7481851760294213757\surefirebooter18379003382532049116.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.15+9-LTS-241"/>
@@ -59,40 +59,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testConexionClienteServidorYEnvioMensaje" classname="com.chatseguro.ConexionManagerTest" time="0.758">
-    <error message="Inappropriate key specification" type="java.security.spec.InvalidKeySpecException">java.security.spec.InvalidKeySpecException: Inappropriate key specification
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-Caused by: java.security.InvalidKeyException: Invalid encoding
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-Caused by: java.io.EOFException: not enough content
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-</error>
-    <system-out><![CDATA[Esperando conexión en el puerto 5001...
-Conexión aceptada desde /127.0.0.1
-Conectando a localhost:5001
-]]></system-out>
-    <system-err><![CDATA[java.security.spec.InvalidKeySpecException: Inappropriate key specification
-	at java.base/com.sun.crypto.provider.DHKeyFactory.engineGeneratePublic(DHKeyFactory.java:86)
-	at java.base/java.security.KeyFactory.generatePublic(KeyFactory.java:351)
-	at com.chatseguro.crypto.DHKeyExchange.doPhase(DHKeyExchange.java:54)
-	at com.chatseguro.net.ConexionManager.establecerConexionSegura(ConexionManager.java:55)
-	at com.chatseguro.net.ConexionManager.iniciarComoServidor(ConexionManager.java:37)
-	at com.chatseguro.ConexionManagerTest.lambda$testConexionClienteServidorYEnvioMensaje$0(ConexionManagerTest.java:23)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:842)
-Caused by: java.security.InvalidKeyException: Invalid encoding
-	at java.base/com.sun.crypto.provider.DHPublicKey.<init>(DHPublicKey.java:245)
-	at java.base/com.sun.crypto.provider.DHKeyFactory.engineGeneratePublic(DHKeyFactory.java:79)
-	... 10 more
-Caused by: java.io.EOFException: not enough content
-	at java.base/sun.security.util.DerValue.<init>(DerValue.java:425)
-	at java.base/sun.security.util.DerValue.<init>(DerValue.java:340)
-	at java.base/com.sun.crypto.provider.DHPublicKey.decode(DHPublicKey.java:98)
-	at java.base/com.sun.crypto.provider.DHPublicKey.<init>(DHPublicKey.java:243)
-	... 11 more
-]]></system-err>
-  </testcase>
+  <testcase name="testConexionClienteServidorYEnvioMensaje" classname="com.chatseguro.ConexionManagerTest" time="0.764"/>
 </testsuite>

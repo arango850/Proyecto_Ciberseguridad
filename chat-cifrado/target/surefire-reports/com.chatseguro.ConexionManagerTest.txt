@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.chatseguro.ConexionManagerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.849 s <<< FAILURE! - in com.chatseguro.ConexionManagerTest
-testConexionClienteServidorYEnvioMensaje(com.chatseguro.ConexionManagerTest)  Time elapsed: 0.758 s  <<< ERROR!
-java.security.spec.InvalidKeySpecException: Inappropriate key specification
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-Caused by: java.security.InvalidKeyException: Invalid encoding
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-Caused by: java.io.EOFException: not enough content
-	at com.chatseguro.ConexionManagerTest.testConexionClienteServidorYEnvioMensaje(ConexionManagerTest.java:41)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.845 s - in com.chatseguro.ConexionManagerTest

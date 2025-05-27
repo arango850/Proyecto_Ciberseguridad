@@ -5,6 +5,8 @@
 
 package com.chatseguro.net;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
@@ -46,12 +48,17 @@ public class ConexionManager {
     private void establecerConexionSegura(InputStream in, OutputStream out) throws  Exception{
         DHKeyExchange dh = new DHKeyExchange();
 
-        out.write(dh.getPublicKeyEncoded().length);
-        out.write(dh.getPublicKeyEncoded());
-        out.flush();
+        byte[] myPublicKey = dh.getPublicKeyEncoded();
+        DataOutputStream dos = new DataOutputStream(out);
+        dos.writeInt(myPublicKey.length);
+        dos.write(myPublicKey);
+        dos.flush();
 
-        int length = in.read();
-        byte[] publicKeyReceived = in.readNBytes(length);
+        DataInputStream dis = new DataInputStream(in);
+        int length = dis.readInt();
+        byte[] publicKeyReceived = new byte[length];
+        dis.readFully(publicKeyReceived);
+
         dh.doPhase(publicKeyReceived);
 
         SecretKey key = dh.generateAESKey();

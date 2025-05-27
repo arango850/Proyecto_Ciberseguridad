@@ -13,7 +13,7 @@ public class ConexionManagerTest {
 
     @Test
     public void testConexionClienteServidorYEnvioMensaje() throws Exception {
-        int puerto = 5001; // Puedes cambiarlo si el puerto está ocupado
+        int puerto = 5001; 
         var executor = Executors.newSingleThreadExecutor();
 
         // Servidor
@@ -46,7 +46,8 @@ public class ConexionManagerTest {
         handlerCliente.enviarMensaje("Hola desde el cliente");
         String respuesta = handlerCliente.recibirMensaje();
 
-        assertEquals("Hola cliente", respuesta, "El mensaje del servidor debe ser correcto");
+        assertEquals("El mensaje del servidor debe ser correcto", "Hola cliente", respuesta);
+
 
         executor.shutdown();
     }
