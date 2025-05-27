@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.chatseguro.AESManagerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.246 s <<< FAILURE! - in com.chatseguro.AESManagerTest
+testEncryptDecrypt(com.chatseguro.AESManagerTest)  Time elapsed: 0.175 s  <<< FAILURE!
+org.junit.ComparisonFailure: Este es un mensaje secreto expected:<E[ste es un mensaje secreto]> but was:<E[l mensaje descifrado debe coincidir con el original]>
+	at com.chatseguro.AESManagerTest.testEncryptDecrypt(AESManagerTest.java:27)
+
