@@ -20,7 +20,7 @@ import com.chatseguro.crypto.AESManager;
  */
 public class MensajeHandler {
 
-    private Socket socket;
+    public Socket socket;
     private BufferedReader in;
     private BufferedWriter out;
     private AESManager aesManager;
