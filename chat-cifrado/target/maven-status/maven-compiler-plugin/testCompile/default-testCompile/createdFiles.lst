@@ -1,0 +1,4 @@
+com\chatseguro\DHKeyExchangeTest.class
+com\chatseguro\AESManagerTest.class
+com\chatseguro\ConexionManagerTest.class
+com\chatseguro\MensajeHandlerTest.class

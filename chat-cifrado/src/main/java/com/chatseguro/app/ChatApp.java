@@ -12,7 +12,7 @@ package com.chatseguro.app;
 public class ChatApp {
     public static void main(String[] args) {
     javax.swing.SwingUtilities.invokeLater(() -> {
-            new com.chatseguro.ui.gui.MainWindow().iniciar();
+            new com.chatseguro.ui.gui.MainWindow().setVisible(true);
         });
     }
 }

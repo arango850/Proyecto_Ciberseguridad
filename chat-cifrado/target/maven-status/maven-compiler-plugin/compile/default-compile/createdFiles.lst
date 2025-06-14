@@ -1,6 +1,11 @@
 com\chatseguro\ui\ConsolaUI.class
-com\chatseguro\app\ChatApp.class
+com\chatseguro\ui\gui\MainWindow.class
 com\chatseguro\crypto\DHKeyExchange.class
 com\chatseguro\net\ConexionManager.class
 com\chatseguro\net\MensajeHandler.class
 com\chatseguro\crypto\AESManager.class
+com\chatseguro\ui\gui\ChatPanel.class
+com\chatseguro\ui\gui\ClientePanel.class
+com\chatseguro\app\ChatApp.class
+com\chatseguro\ui\gui\MenuPanel.class
+com\chatseguro\ui\gui\ServidorPanel.class
