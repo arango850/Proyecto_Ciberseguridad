@@ -7,8 +7,13 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,8 +30,9 @@ public class ServidorPanel extends JPanel {
     private JButton btnCopiar;
     private JButton btnVolver;
     private JTextField txtPuerto;
+    private JComboBox<String> comboIPs;
 
-    public ServidorPanel(MainWindow mainWindow){
+    public ServidorPanel(MainWindow mainWindow) {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -39,7 +45,17 @@ public class ServidorPanel extends JPanel {
         gbc.gridwidth = 2;
         add(titulo, gbc);
 
+        // IPs disponibles
+        List<String> ips = obtenerIPsLocales();
         gbc.gridwidth = 1;
+        gbc.gridy++;
+        add(new JLabel("Selecciona la IP:"), gbc);
+
+        comboIPs = new JComboBox<>(ips.toArray(new String[0]));
+        gbc.gridx = 1;
+        add(comboIPs, gbc);
+
+        gbc.gridx = 0;
         gbc.gridy++;
         add(new JLabel("Puerto:"), gbc);
 
@@ -75,52 +91,54 @@ public class ServidorPanel extends JPanel {
         gbc.gridy++;
         add(btnCopiar, gbc);
 
-         btnVolver.addActionListener((ActionEvent e) -> mainWindow.mostrarPanel(MainWindow.MENU));
+        // Acción para volver al menú
+        btnVolver.addActionListener((ActionEvent e) -> mainWindow.mostrarPanel(MainWindow.MENU));
 
-         btnCopiar.addActionListener((ActionEvent e) -> {
+        // Acción para copiar IP y puerto
+        btnCopiar.addActionListener((ActionEvent e) -> {
             String info = lblIP.getText().replace("IP: ", "") + ":" + lblPuerto.getText().replace("Puerto: ", "");
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new java.awt.datatransfer.StringSelection(info), null);
             JOptionPane.showMessageDialog(this, "Copiado al portapapeles: " + info);
         });
 
+        // Acción para iniciar el servidor
         btnIniciar.addActionListener((ActionEvent e) -> {
-        try {
-        int puerto = Integer.parseInt(txtPuerto.getText().trim());
-        String ip = InetAddress.getLocalHost().getHostAddress();
-        lblIP.setText("IP: " + ip);
-        lblPuerto.setText("Puerto: " + puerto);
-        lblEstado.setText("Esperando conexión en " + ip + ":" + puerto + " ...");
-        btnIniciar.setEnabled(false);
-
-        new Thread(() -> {
             try {
-                com.chatseguro.net.ConexionManager conexion = new com.chatseguro.net.ConexionManager();
-                conexion.iniciarComoServidor(puerto);
+                int puerto = Integer.parseInt(txtPuerto.getText().trim());
+                String ipSeleccionada = (String) comboIPs.getSelectedItem();
+                lblIP.setText("IP: " + ipSeleccionada);
+                lblPuerto.setText("Puerto: " + puerto);
+                lblEstado.setText("Esperando conexión en " + ipSeleccionada + ":" + puerto + " ...");
+                btnIniciar.setEnabled(false);
 
-                
-                SwingUtilities.invokeLater(() -> {
-                    setClienteConectado(conexion.getHandler().socket.getInetAddress().getHostAddress());
-                });
+                new Thread(() -> {
+                    try {
+                        com.chatseguro.net.ConexionManager conexion = new com.chatseguro.net.ConexionManager();
+                        // Debes tener un método en ConexionManager que acepte IP y puerto:
+                        conexion.iniciarComoServidor1(puerto, ipSeleccionada);
 
-                // Cambiar a la ventana de chat
-                SwingUtilities.invokeLater(() -> {
-                    ChatPanel chatPanel = (ChatPanel) mainWindow.getPanel(MainWindow.CHAT);
-                    chatPanel.setHandler(conexion.getHandler());
-                    mainWindow.mostrarPanel(MainWindow.CHAT);
-                    // Puedes pasar la conexión/handler al ChatPanel si lo necesitas
-                });
+                        SwingUtilities.invokeLater(() -> {
+                            setClienteConectado(conexion.getHandler().socket.getInetAddress().getHostAddress());
+                        });
+
+                        SwingUtilities.invokeLater(() -> {
+                            ChatPanel chatPanel = (ChatPanel) mainWindow.getPanel(MainWindow.CHAT);
+                            chatPanel.setHandler(conexion.getHandler());
+                            mainWindow.mostrarPanel(MainWindow.CHAT);
+                        });
+
+                    } catch (Exception ex) {
+                        SwingUtilities.invokeLater(() -> lblEstado.setText("Error: " + ex.getMessage()));
+                    }
+                }).start();
 
             } catch (Exception ex) {
-                SwingUtilities.invokeLater(() -> lblEstado.setText("Error: " + ex.getMessage()));
-            }
-            }).start();
-
-        } catch (Exception ex) {
-        lblEstado.setText("Error: " + ex.getMessage());
+                lblEstado.setText("Error: " + ex.getMessage());
             }
         });
     }
 
+    // Método para actualizar el estado desde la lógica de red
     public void setEstado(String estado) {
         lblEstado.setText(estado);
     }
@@ -131,5 +149,28 @@ public class ServidorPanel extends JPanel {
 
     public int getPuerto() {
         return Integer.parseInt(txtPuerto.getText().trim());
+    }
+
+    // Método para obtener todas las IPs locales IPv4 no loopback
+    private List<String> obtenerIPsLocales() {
+        List<String> ips = new ArrayList<>();
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface ni = interfaces.nextElement();
+                if (ni.isUp() && !ni.isLoopback()) {
+                    Enumeration<InetAddress> addresses = ni.getInetAddresses();
+                    while (addresses.hasMoreElements()) {
+                        InetAddress addr = addresses.nextElement();
+                        if (addr instanceof java.net.Inet4Address && !addr.isLoopbackAddress()) {
+                            ips.add(addr.getHostAddress());
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            ips.add("No se pudieron obtener las IPs");
+        }
+        return ips;
     }
 }

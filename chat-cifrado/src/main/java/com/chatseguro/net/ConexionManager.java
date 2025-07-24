@@ -9,6 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -67,4 +68,11 @@ public class ConexionManager {
         this.handler = new MensajeHandler(socket, aes);
     }
 
+    public void iniciarComoServidor1(int puerto, String ip) throws Exception {
+    ServerSocket serverSocket = new ServerSocket(puerto, 50, InetAddress.getByName(ip));
+    System.out.println("Esperando conexión en " + ip + ":" + puerto + "...");
+    this.socket = serverSocket.accept();
+    System.out.println("Conexión aceptada desde " + socket.getInetAddress());
+    establecerConexionSegura(socket.getInputStream(), socket.getOutputStream());
+}
 }
